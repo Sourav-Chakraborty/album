@@ -50,7 +50,9 @@ function Dashboard() {
 
   const [chunkUpload, { isLoading }] = useChunkUploadMutation();
   const [chunkMerge] = useChunkMergeMutation();
-  useMeQuery(undefined, { refetchOnMountOrArgChange: true });
+  const { refetch } = useMeQuery(undefined, {
+    refetchOnMountOrArgChange: true,
+  });
   const loggedInUser = useSelector((state: RootState) => state.auth.user);
 
   const handlePhotoUpload = (event: ChangeEvent<HTMLInputElement>) => {
@@ -137,6 +139,7 @@ function Dashboard() {
     }
 
     setPreviewPhotos([]);
+    refetch();
   };
 
   const handleCancelUpload = () => {

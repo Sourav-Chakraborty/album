@@ -161,7 +161,13 @@ function Login() {
               type="submit"
               disabled={isLoading || registerLoading}
             >
-              {isRegister ? "Create album account" : "Login to album"}
+              {isRegister
+                ? registerLoading
+                  ? "Creating..."
+                  : "Create album account"
+                : isLoading
+                  ? "Logging in..."
+                  : "Login to album"}
             </button>
           </form>
 

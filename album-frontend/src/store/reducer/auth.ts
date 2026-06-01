@@ -54,7 +54,7 @@ const authSlice = createSlice({
           state.isAuthenticate = false;
           state.user = null;
 
-          const isTokenNotFound = action.payload?.tokenNotFound;
+          const isTokenNotFound = action.payload?.data?.tokenNotFound;
           if (isTokenNotFound) {
             alert("Please allow cookies to continue");
           }

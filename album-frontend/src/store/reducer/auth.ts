@@ -50,7 +50,7 @@ const authSlice = createSlice({
           authApi.endpoints.me.matchRejected,
         ),
         (state, action) => {
-          console.log("action", action.payload);
+          console.log("action job", action);
           state.isAuthenticate = false;
           state.user = null;
 

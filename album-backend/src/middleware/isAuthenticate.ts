@@ -17,7 +17,9 @@ export const isAuthenticate = async (
   try {
     const token = req.cookies.authToken;
     if (!token) {
-      return res.status(401).json({ message: "Unauthorized" });
+      return res
+        .status(401)
+        .json({ message: "Unauthorized", tokenNotFound: true });
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET!) as {

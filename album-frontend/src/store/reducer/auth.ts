@@ -49,9 +49,15 @@ const authSlice = createSlice({
           authApi.endpoints.logout.matchRejected,
           authApi.endpoints.me.matchRejected,
         ),
-        (state) => {
+        (state, action) => {
+          console.log("action", action.payload?.tokenNotFound);
           state.isAuthenticate = false;
           state.user = null;
+
+          const isTokenNotFound = action.payload?.tokenNotFound;
+          if (isTokenNotFound) {
+            alert("Please allow cookies to continue");
+          }
         },
       ));
   },
